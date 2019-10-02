@@ -17,9 +17,7 @@ const dates = []
 const logSize = Math.floor(Math.random() * 10) + 5
 
 for (let i = 0; i < logSize; i += 1) {
-  console.log("please work")
   dates.push(randomDate(new Date(1800, 0, 0), new Date(1950, 0, 0)))
-  console.log(dates)
 }
 
 const date_sort_asc = (date1, date2) => {
@@ -47,7 +45,7 @@ const adjectives = [
   "disconcerting",
 ]
 
-const numberPassengers = Math.floor(Math.random() * 68) + 3
+const numberPassengers = Math.floor(Math.random() * 300) + 3
 
 const nouns = [
   `a captor`,
@@ -106,6 +104,8 @@ const shipAdjectives = [
   "aching",
   "resilient",
   "proud",
+  "new",
+  "old",
 ]
 
 const shipNouns = [
@@ -126,26 +126,51 @@ const shipNouns = [
   "oyster",
   "funeral",
   "dinner",
+  "excellence",
+  "opal",
+  "fortune",
+  "simone",
+  "endurance",
+  "solution",
+  "eminence",
+  "versailles",
+  "orca",
+  "dream",
 ]
 
 const shipName = `${pick(shipPrefixes)} ${pick(shipAdjectives)} ${pick(
   shipNouns
 )}`.toUpperCase()
 
-const redactedSubstitute = "██"
+const apply = (func, val, chance = 0.5) => {
+  const flip = Math.random()
+  if (flip <= chance) {
+    return func(val)
+  }
+  return val
+}
 
-const passengerCount = pick([redactedSubstitute, numberPassengers])
+const redactWord = word => {
+  return "█".repeat(word.length)
+}
 
+const redact = str => {
+  const strArr = str.split(" ")
+  const redactIndex = Math.floor(Math.random() * strArr.length)
+  const redactedWord = strArr[redactIndex]
+  strArr[redactIndex] = redactWord(redactedWord)
+  return strArr.join(" ")
+}
 export default function stories() {
   return (
     <Layout>
       <div>
         <h1>{shipName}</h1>
         <h2>manifest</h2>
-        <p>{passengerCount} passengers</p>
+        <p>{apply(redactWord, `${numberPassengers}`, 0.1)} passengers</p>
         <h2>travel log</h2>
         {logs.map(log => {
-          return <p>{log}</p>
+          return <p key={log}>{apply(redact, log, 0.01)}</p>
         })}
       </div>
     </Layout>
