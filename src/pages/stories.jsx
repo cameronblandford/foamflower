@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
+import fillTemplate from "../util/template"
 
 const randomDate = (start, end) => {
   return new Date(
@@ -31,45 +32,12 @@ const date_sort_asc = (date1, date2) => {
 
 const sortedDates = dates.sort(date_sort_asc)
 
-const adjectives = [
-  "strange",
-  "brittle",
-  "obsidian",
-  "pained",
-  "alert",
-  "drowsy",
-  "electrified",
-  "galvanized",
-  "gorgeous",
-  "beautiful",
-  "disconcerting",
-]
-
 const numberPassengers = Math.floor(Math.random() * 300) + 3
-
-const nouns = [
-  `a captor`,
-  `a flock of strange birds`,
-  `a fire`,
-  `anger`,
-  `morbid curiosity`,
-  `wonderment`,
-  `bewildered animals`,
-  `tall clouds`,
-  `a warm mist`,
-  `hysteria`,
-  `an uncertain rain`,
-  `the captain`,
-  `a stowaway`,
-]
-
-const verbs = ["assaults", "talks to", "attempts to calm", "feels", "aches for"]
+const templates = ["$NOUN has thing happen to it", "$NOUN $VERB $NOUN"]
 
 const logs = sortedDates.map(date => {
   const dateString = date.toDateString()
-  return `${dateString.toUpperCase()} :: ${pick(nouns)} ${pick(verbs)} ${pick(
-    nouns
-  )}`
+  return `${dateString.toUpperCase()} :: ${fillTemplate(pick(templates))}`
 })
 
 const shipPrefixes = [
@@ -161,6 +129,7 @@ const redact = str => {
   strArr[redactIndex] = redactWord(redactedWord)
   return strArr.join(" ")
 }
+
 export default function stories() {
   return (
     <Layout>
@@ -172,6 +141,7 @@ export default function stories() {
         {logs.map(log => {
           return <p key={log}>{apply(redact, log, 0.01)}</p>
         })}
+        <hr />
       </div>
     </Layout>
   )
