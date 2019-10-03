@@ -23,6 +23,7 @@ export const peopleSingular = [
   "a missionary",
   "the deacon",
   "a couple",
+  "a poet",
 ]
 export const peoplePlural = [
   "a husband and wife",
@@ -42,7 +43,7 @@ export const placeDescriptors = [
   "a large public funeral is happening",
   "there is some sort of celebration happening",
 ]
-export const trinkers = []
+export const trinkets = []
 export const concepts = []
 export const animals = []
 export default nouns

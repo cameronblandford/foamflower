@@ -1,11 +1,35 @@
-import nouns from "./nouns"
+import nouns, {
+  trinkets,
+  peoplePlural,
+  peopleSingular,
+  places,
+  placeDescriptors,
+} from "./nouns"
 import adjectives from "./adjectives"
-import verbs from "./verbs"
+import verbs, {
+  intransitiveVerbs,
+  transitiveVerbs,
+  linkingVerbs,
+  noActionVerbs,
+  auxiliaryVerbs,
+} from "./verbs"
+import adverbs from "./adverbs"
 
 const vars = {
   $NOUN: nouns,
   $ADJ: adjectives,
   $VERB: verbs,
+  $PLACE: places,
+  $PLACEDESCRIPTOR: placeDescriptors,
+  $PERSON: peopleSingular,
+  $PEOPLE: peoplePlural,
+  $TRINKET: trinkets,
+  $ADVERB: adverbs,
+  $INTRANSITIVEVERB: intransitiveVerbs,
+  $TRANSITIVEVERB: transitiveVerbs,
+  $LINKINGVERB: linkingVerbs,
+  $NOACTIONVERB: noActionVerbs,
+  $AUXILIARYVERB: auxiliaryVerbs,
 }
 
 const pick = arr => {
@@ -16,7 +40,8 @@ const fillTemplate = str => {
   let newStr = str
   while (/\$.+/.test(newStr)) {
     let varName = newStr.match(/\$\w+/)[0]
-    console.log(varName)
+    let newWord = pick(vars[varName] || ["REDACTED"])
+    newWord = /\$.+/.test(newWord) ? fillTemplate(newWord) : newWord
     newStr = newStr.replace(varName, pick(vars[varName] || ["REDACTED"]))
   }
   return newStr

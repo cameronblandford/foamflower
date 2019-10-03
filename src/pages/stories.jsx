@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import fillTemplate from "../util/template"
+import templates from "../util/templates"
 
 const randomDate = (start, end) => {
   return new Date(
@@ -33,7 +34,6 @@ const date_sort_asc = (date1, date2) => {
 const sortedDates = dates.sort(date_sort_asc)
 
 const numberPassengers = Math.floor(Math.random() * 300) + 3
-const templates = ["$NOUN has thing happen to it", "$NOUN $VERB $NOUN"]
 
 const logs = sortedDates.map(date => {
   const dateString = date.toDateString()
