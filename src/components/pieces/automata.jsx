@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { pick } from "../../util/template"
+import { pick } from "../../util/templateBuilder"
 import cloneDeep from "lodash/cloneDeep"
 const coordWords = [
   "leopard",

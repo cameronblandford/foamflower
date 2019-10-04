@@ -1,5 +1,5 @@
 import React from "react"
-import { pick } from "../../util/template"
+import { pick } from "../../util/templateBuilder"
 const coordWords = [
   "leopard",
   "chandelier",

@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { pick } from "../util/template"
+import { pick } from "../util/helpers"
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz    "
 
@@ -26,15 +26,33 @@ const writeHaiku = () => {
   }
   const poem = (
     <div>
-      {firstLine}
-      <br />
-      {secondLine}
-      <br />
+      {firstLine}<br />
+      {secondLine}<br />
       {thirdLine}
-      <br />
     </div>
   )
   return poem
+}
+
+const writeSimplePoem = () => {
+  const objects = ['you', 'me']
+  const subjects = ['I', 'You'];
+  const verbs = ['hold', 'leave', 'find',
+    'touch', 'kiss', 'welcome', 'explore', 'create', 'destroy']
+  const lines = [1, 2, 3].map(() => {
+    const index = randInt(0, 2);
+    const obj = objects[index];
+    const sub = subjects[index];
+    const verb = pick(verbs);
+    return `${sub} ${verb} ${obj}.`
+  })
+  return (
+    <p>
+      {lines[0]}<br />
+      {lines[1]}<br />
+      {lines[2]}
+    </p>
+  )
 }
 export default function poems() {
   return (
@@ -46,7 +64,7 @@ export default function poems() {
         <h3>2</h3>
         {writeHaiku()}
         <h3>3</h3>
-        {writeHaiku()}
+        {writeSimplePoem()}
         <h3>4</h3>
         {writeHaiku()}
         <h3>5</h3>

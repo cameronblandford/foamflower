@@ -11,8 +11,8 @@ import nouns, {
   landmarksNearby,
   environments,
   travel,
-} from "./nouns"
-import adjectives from "./adjectives"
+} from "./words/nouns"
+import adjectives from "./words/adjectives"
 import verbs, {
   intransitiveVerbs,
   linkingVerbs,
@@ -20,8 +20,8 @@ import verbs, {
   auxiliaryVerbs,
   transitiveVerbsSingle,
   transitiveVerbsPlural,
-} from "./verbs"
-import adverbs from "./adverbs"
+} from "./words/verbs"
+import adverbs from "./words/adverbs"
 
 const vars = {
   $NOUN: nouns,

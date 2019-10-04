@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import fillTemplate from "../util/template"
+import fillTemplate from "../util/templateBuilder"
 import templates from "../util/templates"
 import Map from "../components/pieces/map"
 const randomDate = (start, end) => {
