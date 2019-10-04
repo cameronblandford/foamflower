@@ -111,6 +111,7 @@ export default function Map() {
     const newMatrix = cloneDeep(matrix)
     addIsland(newMatrix)
     setMatrix(newMatrix)
+    // tick logic here
   }, 1000)
 
   const textMap = (

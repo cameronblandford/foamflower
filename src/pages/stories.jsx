@@ -138,6 +138,11 @@ export default function stories() {
         <h1>{shipName}</h1>
         <h2>manifest</h2>
         <p>{apply(redactWord, `${numberPassengers}`, 0.1)} passengers</p>
+        <p>a flagon of oil</p>
+        <h2>planned departure date</h2>
+        <p>{sortedDates[0].toDateString()}</p>
+        <h2>planned arrival date</h2>
+        <p>{sortedDates[sortedDates.length - 1].toDateString()}</p>
         <h2>travel log</h2>
         {logs.map(log => {
           return <p key={log}>{apply(redact, log, 0.01)}</p>
