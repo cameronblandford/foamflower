@@ -6,7 +6,20 @@ export default [
   "aches for",
 ]
 
-export const transitiveVerbs = [
+export const transitiveVerbsPlural = [
+  "assault",
+  "think about",
+  "hold",
+  "chat with",
+  "mumble about",
+  "fish with",
+  "stalk",
+  "talk to",
+  "attempt to duel",
+  "start a fight with",
+  "conspire with",
+]
+export const transitiveVerbsSingle = [
   "assaults",
   "thinks about",
   "holds",
@@ -24,6 +37,7 @@ export const intransitiveVerbs = [
   "murmurs $ADVERB",
   "paces $ADVERB",
   "gives a speech",
+  "hums a $SONG",
 ]
 export const auxiliaryVerbs = []
 export const noActionVerbs = []

@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import fillTemplate from "../util/template"
 import templates from "../util/templates"
-
+import Map from "../components/pieces/map"
 const randomDate = (start, end) => {
   return new Date(
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
@@ -35,11 +35,6 @@ const sortedDates = dates.sort(date_sort_asc)
 
 const numberPassengers = Math.floor(Math.random() * 300) + 3
 
-const logs = sortedDates.map(date => {
-  const dateString = date.toDateString()
-  return `${dateString.toUpperCase()} :: ${fillTemplate(pick(templates))}`
-})
-
 const shipPrefixes = [
   "H.M.S.",
   "S.S.",
@@ -56,6 +51,8 @@ const shipPrefixes = [
   "G.T.S.",
   "L.N.C.",
   "Y.M.T.",
+  "D.V.",
+  "H.S.",
 ]
 
 const shipAdjectives = [
@@ -131,6 +128,10 @@ const redact = str => {
 }
 
 export default function stories() {
+  const logs = sortedDates.map(date => {
+    const dateString = date.toDateString()
+    return `${dateString.toUpperCase()} :: ${fillTemplate(pick(templates))}`
+  })
   return (
     <Layout>
       <div>
@@ -142,6 +143,7 @@ export default function stories() {
           return <p key={log}>{apply(redact, log, 0.01)}</p>
         })}
         <hr />
+        <Map />
       </div>
     </Layout>
   )

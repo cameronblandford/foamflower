@@ -2,37 +2,53 @@ import nouns, {
   trinkets,
   peoplePlural,
   peopleSingular,
-  places,
-  placeDescriptors,
+  harbors,
+  harborDescriptors,
+  illnesses,
+  songs,
+  colors,
+  landmarksThrough,
+  landmarksNearby,
+  environments,
+  travel,
 } from "./nouns"
 import adjectives from "./adjectives"
 import verbs, {
   intransitiveVerbs,
-  transitiveVerbs,
   linkingVerbs,
   noActionVerbs,
   auxiliaryVerbs,
+  transitiveVerbsSingle,
+  transitiveVerbsPlural,
 } from "./verbs"
 import adverbs from "./adverbs"
 
 const vars = {
   $NOUN: nouns,
-  $ADJ: adjectives,
+  $ADJECTIVE: adjectives,
   $VERB: verbs,
-  $PLACE: places,
-  $PLACEDESCRIPTOR: placeDescriptors,
+  $HARBOR: harbors,
+  $HARBORDESCRIPTOR: harborDescriptors,
   $PERSON: peopleSingular,
   $PEOPLE: peoplePlural,
   $TRINKET: trinkets,
   $ADVERB: adverbs,
   $INTRANSITIVEVERB: intransitiveVerbs,
-  $TRANSITIVEVERB: transitiveVerbs,
+  $TRANSITIVEVERBSINGLE: transitiveVerbsSingle,
+  $TRANSITIVEVERBPLURAL: transitiveVerbsPlural,
   $LINKINGVERB: linkingVerbs,
   $NOACTIONVERB: noActionVerbs,
   $AUXILIARYVERB: auxiliaryVerbs,
+  $ILLNESS: illnesses,
+  $SONG: songs,
+  $COLOR: colors,
+  $TRAVELWORD: travel,
+  $ENVIRONMENT: environments,
+  $LANDMARKTHROUGH: landmarksThrough,
+  $LANDMARKNEARBY: landmarksNearby,
 }
 
-const pick = arr => {
+export const pick = arr => {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
