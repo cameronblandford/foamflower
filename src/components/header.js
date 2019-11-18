@@ -7,6 +7,7 @@ const Header = ({ siteTitle }) => (
     <nav>
       <Link to="/poems">Poems</Link>
       <Link to="/stories">Stories</Link>
+      <Link to="/posts">Missives</Link>
       <Link to="/other">Other</Link>
     </nav>
   </header>

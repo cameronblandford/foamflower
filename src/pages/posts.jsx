@@ -2,9 +2,8 @@ import React from "react"
 import Layout from '../components/layout'
 import { Link } from 'gatsby'
 const PostLink = (props) => {
-  const { key, post } = props;
-  console.log(post);
-  return <div><Link to={post.frontmatter.path}>{post.frontmatter.title}</Link></div>
+  const { post } = props;
+  return <div><Link to={post.frontmatter.path}><h3>{post.frontmatter.title}</h3></Link><p>{post.excerpt}</p></div>
 }
 
 const IndexPage = ({
@@ -25,7 +24,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 50)
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             path

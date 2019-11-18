@@ -9,8 +9,8 @@ export default function Template({
   return (
     <Layout>
       <div>
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
+        {frontmatter.title}<br />
+        {frontmatter.date}
         <div
           dangerouslySetInnerHTML={{ __html: html }}
         />
