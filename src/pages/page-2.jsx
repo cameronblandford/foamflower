@@ -1,16 +1,18 @@
-import React from "react"
-import { Link } from "gatsby"
-import Kabbalah from '../components/kabbalh'
+import React, { useState } from "react";
+import { Link } from "gatsby";
+import Kabbalah from "../components/kabbalah";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
-const SecondPage = () => (
-  <Layout>
+const SecondPage = () => {
+  const [gemText, setGemText] = useState("");
+  return <Layout>
     <SEO title="Page two" />
     <p>Information can go here</p>
-    <Kabbalah word={'hello'}/>
+    <input placeholder="Input text here" value={gemText} onChange={(e) => setGemText(e.target.value)} />
+    <Kabbalah word={gemText} />
   </Layout>
-)
+};
 
-export default SecondPage
+export default SecondPage;

@@ -1,0 +1,27 @@
+enum Hebrew {
+  ALEPH,
+  BET,
+  GIMEL,
+  DALET,
+  HE,
+  VAV,
+  ZAYIN,
+  CHET,
+  TET,
+  YOD,
+  KAF,
+  LAMED,
+  MEM,
+  NUN,
+  SAMEKH,
+  AYIN,
+  PE,
+  FE,
+  TSADI,
+  QOF,
+  RESH,
+  SIN,
+  TAV,
+}
+
+export default Hebrew;
