@@ -1,39 +1,39 @@
-import React from "react"
-import Layout from "../components/layout"
-import fillTemplate from "../util/templateBuilder"
-import templates from "../util/templates"
-import Map from "../components/pieces/map"
+import React from "react";
+import Layout from "../components/layout";
+import fillTemplate from "../util/templateBuilder";
+import templates from "../util/templates";
+import Map from "../components/pieces/map";
 const randomDate = (start, end) => {
   return new Date(
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
-  )
-}
+  );
+};
 
 const pick = arr => {
-  return arr[Math.floor(Math.random() * arr.length)]
-}
+  return arr[Math.floor(Math.random() * arr.length)];
+};
 
-const dates = []
+const dates = [];
 
 // fill dates
-const logSize = Math.floor(Math.random() * 10) + 5
+const logSize = Math.floor(Math.random() * 10) + 5;
 
 for (let i = 0; i < logSize; i += 1) {
-  dates.push(randomDate(new Date(1800, 0, 0), new Date(1950, 0, 0)))
+  dates.push(randomDate(new Date(1800, 0, 0), new Date(1850, 0, 0)));
 }
 
 const date_sort_asc = (date1, date2) => {
   // This is a comparison function that will result in dates being sorted in
   // ASCENDING order. As you can see, JavaScript's native comparison operators
   // can be used to compare dates. This was news to me.
-  if (date1 > date2) return 1
-  if (date1 < date2) return -1
-  return 0
-}
+  if (date1 > date2) return 1;
+  if (date1 < date2) return -1;
+  return 0;
+};
 
-const sortedDates = dates.sort(date_sort_asc)
+const sortedDates = dates.sort(date_sort_asc);
 
-const numberPassengers = Math.floor(Math.random() * 300) + 3
+const numberPassengers = Math.floor(Math.random() * 300) + 3;
 
 const shipPrefixes = [
   "H.M.S.",
@@ -53,7 +53,7 @@ const shipPrefixes = [
   "Y.M.T.",
   "D.V.",
   "H.S.",
-]
+];
 
 const shipAdjectives = [
   "morning",
@@ -71,7 +71,7 @@ const shipAdjectives = [
   "proud",
   "new",
   "old",
-]
+];
 
 const shipNouns = [
   "glory",
@@ -101,37 +101,37 @@ const shipNouns = [
   "versailles",
   "orca",
   "dream",
-]
+];
 
 const shipName = `${pick(shipPrefixes)} ${pick(shipAdjectives)} ${pick(
   shipNouns
-)}`.toUpperCase()
+)}`.toUpperCase();
 
 const apply = (func, val, chance = 0.5) => {
-  const flip = Math.random()
+  const flip = Math.random();
   if (flip <= chance) {
-    return func(val)
+    return func(val);
   }
-  return val
-}
+  return val;
+};
 
 const redactWord = word => {
-  return "█".repeat(word.length)
-}
+  return "█".repeat(word.length);
+};
 
 const redact = str => {
-  const strArr = str.split(" ")
-  const redactIndex = Math.floor(Math.random() * strArr.length)
-  const redactedWord = strArr[redactIndex]
-  strArr[redactIndex] = redactWord(redactedWord)
-  return strArr.join(" ")
-}
+  const strArr = str.split(" ");
+  const redactIndex = Math.floor(Math.random() * strArr.length);
+  const redactedWord = strArr[redactIndex];
+  strArr[redactIndex] = redactWord(redactedWord);
+  return strArr.join(" ");
+};
 
 export default function stories() {
   const logs = sortedDates.map(date => {
-    const dateString = date.toDateString()
-    return `${dateString.toUpperCase()} :: ${fillTemplate(pick(templates))}`
-  })
+    const dateString = date.toDateString();
+    return `${dateString.toUpperCase()} :: ${fillTemplate(pick(templates))}`;
+  });
   return (
     <Layout>
       <div>
@@ -145,11 +145,11 @@ export default function stories() {
         <p>{sortedDates[sortedDates.length - 1].toDateString()}</p>
         <h2>travel log</h2>
         {logs.map(log => {
-          return <p key={log}>{apply(redact, log, 0.01)}</p>
+          return <p key={log}>{apply(redact, log, 0.01)}</p>;
         })}
         <hr />
         <Map />
       </div>
     </Layout>
-  )
+  );
 }
