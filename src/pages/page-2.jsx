@@ -7,12 +7,18 @@ import SEO from "../components/seo";
 
 const SecondPage = () => {
   const [gemText, setGemText] = useState("");
-  return <Layout>
-    <SEO title="Page two" />
-    <p>Information can go here</p>
-    <input placeholder="Input text here" value={gemText} onChange={(e) => setGemText(e.target.value)} />
-    <Kabbalah word={gemText} />
-  </Layout>
+  return (
+    <Layout>
+      <SEO title="Page two" />
+      <p>Information can go here</p>
+      <input
+        placeholder="Input text here"
+        value={gemText}
+        onChange={e => setGemText(e.target.value)}
+      />
+      <Kabbalah word={gemText} />
+    </Layout>
+  );
 };
 
 export default SecondPage;
