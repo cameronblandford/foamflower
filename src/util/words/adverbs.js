@@ -10,4 +10,4 @@ export default [
   "mischieviously",
   "happily",
   "morosely",
-]
+];

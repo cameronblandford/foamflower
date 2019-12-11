@@ -8,4 +8,4 @@ export default [
   "a merchant arrives and tries to sell us $TRINKET",
   "we $TRAVELWORD $ENVIRONMENT past $LANDMARKNEARBY",
   "we $TRAVELWORD through $LANDMARKTHROUGH $ENVIRONMENT",
-]
+];

@@ -11,8 +11,8 @@ import nouns, {
   landmarksNearby,
   environments,
   travel,
-} from "./words/nouns"
-import adjectives from "./words/adjectives"
+} from "./words/nouns";
+import adjectives from "./words/adjectives";
 import verbs, {
   intransitiveVerbs,
   linkingVerbs,
@@ -20,8 +20,8 @@ import verbs, {
   auxiliaryVerbs,
   transitiveVerbsSingle,
   transitiveVerbsPlural,
-} from "./words/verbs"
-import adverbs from "./words/adverbs"
+} from "./words/verbs";
+import adverbs from "./words/adverbs";
 
 const vars = {
   $NOUN: nouns,
@@ -46,21 +46,21 @@ const vars = {
   $ENVIRONMENT: environments,
   $LANDMARKTHROUGH: landmarksThrough,
   $LANDMARKNEARBY: landmarksNearby,
-}
+};
 
 export const pick = arr => {
-  return arr[Math.floor(Math.random() * arr.length)]
-}
+  return arr[Math.floor(Math.random() * arr.length)];
+};
 
 const fillTemplate = str => {
-  let newStr = str
+  let newStr = str;
   while (/\$.+/.test(newStr)) {
-    let varName = newStr.match(/\$\w+/)[0]
-    let newWord = pick(vars[varName] || ["REDACTED"])
-    newWord = /\$.+/.test(newWord) ? fillTemplate(newWord) : newWord
-    newStr = newStr.replace(varName, pick(vars[varName] || ["REDACTED"]))
+    let varName = newStr.match(/\$\w+/)[0];
+    let newWord = pick(vars[varName] || ["REDACTED"]);
+    newWord = /\$.+/.test(newWord) ? fillTemplate(newWord) : newWord;
+    newStr = newStr.replace(varName, pick(vars[varName] || ["REDACTED"]));
   }
-  return newStr
-}
+  return newStr;
+};
 
-export default fillTemplate
+export default fillTemplate;

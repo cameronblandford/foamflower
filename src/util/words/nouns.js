@@ -12,7 +12,7 @@ const nouns = [
   `an uncertain rain`,
   `the captain`,
   `a stowaway`,
-]
+];
 export const peopleSingular = [
   "the cook",
   "the captain",
@@ -31,14 +31,14 @@ export const peopleSingular = [
   "a priestess",
   "a disgraced man",
   "a soldier",
-]
+];
 export const peoplePlural = [
   "a husband and wife",
   "a man and his pet rat",
   "three beautiful birds of paradise",
   "the ship's crewmembers",
   "the prisoners",
-]
+];
 
 export const illnesses = [
   "hysteria",
@@ -48,8 +48,8 @@ export const illnesses = [
   "sickness",
   "despondence",
   "madness",
-]
-export const songs = ["song", "hymn", "tune", "prayer", "shanty"]
+];
+export const songs = ["song", "hymn", "tune", "prayer", "shanty"];
 
 // We dock at a <place>
 export const harbors = [
@@ -60,7 +60,7 @@ export const harbors = [
   "a fishing village",
   "what looks to be a resort",
   "a gathering of other ships",
-]
+];
 
 export const landmarksThrough = [
   "a large gate made of rough-hewn marble",
@@ -70,12 +70,12 @@ export const landmarksThrough = [
   "a dead reef",
   "a fleet of boats with $COLOR-colored sails",
   "the territory of some beast which stalks us endlessly but never attacks",
-]
+];
 
 export const landmarksNearby = [
   "a lighthouse in the distance",
   "what looks like the decaying body of a sheep on a rowboat",
-]
+];
 
 export const environments = [
   "in the windless night",
@@ -85,9 +85,9 @@ export const environments = [
   "at dawn",
   "in the $ADJECTIVE glow of early evening",
   "in the $ADJECTIVE sunlight",
-]
+];
 
-export const travel = ["cruise", "sail", "paddle"]
+export const travel = ["cruise", "sail", "paddle"];
 
 // We dock at a small port, where <placeDescriptor>
 export const harborDescriptors = [
@@ -99,7 +99,7 @@ export const harborDescriptors = [
   "the weapons are purely ornamental",
   "a great hissing fills the air",
   "the ground rumbles softly",
-]
+];
 export const trinkets = [
   "a tarnished silver necklace",
   "an old photograph of $PERSON",
@@ -108,7 +108,7 @@ export const trinkets = [
   "a secret",
   "a plain leather belt",
   "a bottle of $COLOR dye",
-]
+];
 export const colors = [
   "periwinkle",
   "magenta",
@@ -126,7 +126,7 @@ export const colors = [
   "carrot",
   "rose",
   "cherry",
-]
-export const concepts = []
-export const animals = []
-export default nouns
+];
+export const concepts = [];
+export const animals = [];
+export default nouns;

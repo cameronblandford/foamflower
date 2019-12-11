@@ -10,4 +10,4 @@ export default [
   "gorgeous",
   "beautiful",
   "disconcerting",
-]
+];

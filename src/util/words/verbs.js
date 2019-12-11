@@ -4,7 +4,7 @@ export default [
   "attempts to calm",
   "feels",
   "aches for",
-]
+];
 
 export const transitiveVerbsPlural = [
   "assault",
@@ -18,7 +18,7 @@ export const transitiveVerbsPlural = [
   "attempt to duel",
   "start a fight with",
   "conspire with",
-]
+];
 export const transitiveVerbsSingle = [
   "assaults",
   "thinks about",
@@ -31,14 +31,14 @@ export const transitiveVerbsSingle = [
   "attempts to duel",
   "starts a fight with",
   "conspires with",
-]
+];
 export const intransitiveVerbs = [
   "babbles $ADVERB",
   "murmurs $ADVERB",
   "paces $ADVERB",
   "gives a speech",
   "hums a $SONG",
-]
-export const auxiliaryVerbs = []
-export const noActionVerbs = []
-export const linkingVerbs = ["feels", "looks like", "seems to be"]
+];
+export const auxiliaryVerbs = [];
+export const noActionVerbs = [];
+export const linkingVerbs = ["feels", "looks like", "seems to be"];
