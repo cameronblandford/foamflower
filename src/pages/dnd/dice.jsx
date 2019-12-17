@@ -5,6 +5,7 @@ const Dice = () => {
   const [diceOutput, setDiceOutput] = useState(0);
   const [diceAvg, setDiceAvg] = useState(0);
   const [diceArray, setDiceArray] = useState([]);
+  const [cocked, setCocked] = useState(false);
 
   /**
    * WARNING: RESOURCE INTENSIVE / EXPONTENTIALLY COMPLEX (O(n^m), where m is # of dice and n is dice size)
@@ -56,6 +57,11 @@ const Dice = () => {
       setDiceArray(newDiceArray);
     });
     setDiceAvg(avg);
+    if (Math.ceil(Math.random() * 1000) > 995) {
+      setCocked(true);
+    } else {
+      setCocked(false);
+    }
     return sum;
   };
 
@@ -81,7 +87,10 @@ const Dice = () => {
       <button onClick={() => setDiceOutput(parseDiceString(diceString))}>
         roll
       </button>
-      <div>Output: {diceOutput}</div>
+      <div>
+        Output:{" "}
+        {cocked ? "Oops, one of the dice is cocked. Reroll." : diceOutput}
+      </div>
       <div>Min Roll: {Math.min(...Object.keys(dist))}</div>
       <div>Max Roll: {Math.max(...Object.keys(dist))}</div>
       <div>Average Roll: {diceAvg}</div>
