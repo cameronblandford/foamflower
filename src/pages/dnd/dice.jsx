@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Layout from "../../components/layout";
 const Dice = () => {
   const [diceString, setDiceString] = useState("");
   const [diceOutput, setDiceOutput] = useState(0);
@@ -64,7 +64,7 @@ const Dice = () => {
     .map(k => dist[k])
     .reduce((a, b) => a + b, 0);
   return (
-    <div>
+    <Layout>
       <p>
         Write your dice input like "1d6+3d8+3", and click "roll" to generate a
         result.
@@ -94,7 +94,7 @@ const Dice = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </Layout>
   );
 };
 
