@@ -68,7 +68,7 @@ const Dice = () => {
         labels: [...Object.keys(dist)],
         datasets: [
           {
-            label: "# of Votes",
+            label: "Dice Roll Probabilities",
             data: [
               ...Object.values(dist).map(x => toPercent(parseInt(x) / sum)),
             ],
