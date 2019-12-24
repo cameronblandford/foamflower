@@ -1,37 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../../components/layout";
+import Chart from "chart.js";
+
+const toPercent = p => {
+  return parseInt(p * 100 * 10) / 10;
+};
+
+const generateDie = sides => {
+  const newDie = {};
+  for (let i = 1; i < sides + 1; i += 1) {
+    newDie[i] = 1;
+  }
+  return newDie;
+};
+
+const d = generateDie;
+
+const multiplyPolynomials = (poly1, poly2) => {
+  const product = {};
+  const poly1keys = Object.keys(poly1).map(x => parseInt(x));
+  const poly2keys = Object.keys(poly2).map(x => parseInt(x));
+  for (let i in poly1keys) {
+    for (let j in poly2keys) {
+      const newIndex = poly1keys[i] + poly2keys[j];
+      if (!product[newIndex] && product[newIndex] !== 0) {
+        product[newIndex] = 0;
+      }
+      product[newIndex] += poly1[poly1keys[i]] * poly2[poly2keys[j]];
+    }
+  }
+  return product;
+};
+
+const generateDistribution = diceArray => {
+  const newArray = [...diceArray];
+  if (newArray.length === 1) {
+    return d(newArray[0]);
+  }
+  let dist = d(newArray.pop());
+  while (newArray.length > 0) {
+    dist = multiplyPolynomials(dist, d(newArray.pop()));
+  }
+  return dist;
+};
+
 const Dice = () => {
   const [diceString, setDiceString] = useState("");
   const [diceOutput, setDiceOutput] = useState(0);
   const [diceAvg, setDiceAvg] = useState(0);
   const [diceArray, setDiceArray] = useState([]);
   const [cocked, setCocked] = useState(false);
+  const [dist, setDist] = useState({});
+  const [sum, setSum] = useState(0);
 
-  /**
-   * WARNING: RESOURCE INTENSIVE / EXPONTENTIALLY COMPLEX (O(n^m), where m is # of dice and n is dice size)
-   * @param {*} arr The array of dice sizes (e.g. [8, 8, 6] for chaos bolt damage)
-   * @param {*} sum The rolling sum. When manually calling, pass in your modifier value (e.g. for 2d4+2, pass in 2)
-   * @param {*} dist An empty object that will store the roll's distribution data. for 2d6,
-   * it would look like {2:1, 3: 2, ... 7: 6 ... 11: 2, 12: 1}
-   */
-  const nDimensionalIterate = (arr, sum, dist) => {
-    const newArr = [...arr];
-    const current = newArr.pop();
-    for (let i = 1; i < current + 1; i += 1) {
-      if (newArr.length === 0) {
-        if (!dist[sum + i]) {
-          dist[sum + i] = 1;
-        } else {
-          dist[sum + i] = 1 + dist[sum + i];
-        }
-      }
-      nDimensionalIterate(newArr, sum + i, dist);
-    }
-  };
-  const dist = {};
-  nDimensionalIterate(diceArray, 0, dist);
-  console.log(dist);
-  console.log(diceArray);
+  useEffect(() => {
+    let newDist = generateDistribution(diceArray);
+    setDist(newDist);
+    const sum = Object.values(newDist).reduce((a, b) => a + b, 0);
+    setSum(sum);
+  }, [diceArray]);
+
+  useEffect(() => {
+    let ctx = document.getElementById("distChart").getContext("2d");
+    const newChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [...Object.keys(dist)],
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [
+              ...Object.values(dist).map(x => toPercent(parseInt(x) / sum)),
+            ],
+          },
+        ],
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+  }, [dist, sum]);
 
   /**
    * Takes in a specially formatted string and returns the average roll and a random roll
@@ -66,9 +122,6 @@ const Dice = () => {
   };
 
   // the number of total unique rolls, used for finding percent chance of a particular value
-  const sum = Object.keys(dist)
-    .map(k => dist[k])
-    .reduce((a, b) => a + b, 0);
   return (
     <Layout>
       <p>
@@ -95,11 +148,11 @@ const Dice = () => {
       <div>Max Roll: {Math.max(...Object.keys(dist))}</div>
       <div>Average Roll: {diceAvg}</div>
       <div>Probability distribution (out of {sum} possible rolls):</div>
+      <canvas id="distChart" width="400" height="400"></canvas>
       <ul>
         {Object.keys(dist).map(i => (
           <li>
-            {i}: {Math.round((dist[i] / sum) * 1000) / 10}%
-            {/* {i}: {dist[i]} */}
+            {i}: {dist[i]}/{sum} | {((dist[i] / sum) * 1000) / 10}%
           </li>
         ))}
       </ul>
