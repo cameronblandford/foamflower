@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{201:function(e,n,l){"use strict";l.r(n);var a=l(0),t=l.n(a);n.default=function(){return t.a.createElement("div",null,t.a.createElement("h1",null,"Generators"),t.a.createElement("h2",null,"enemies"),t.a.createElement("ul",null,t.a.createElement("li",null,"a goblin with a sword"),t.a.createElement("li",null,"a goblin with a staff"),t.a.createElement("li",null,"an orc with a hand drum")))}}}]);
+//# sourceMappingURL=component---src-pages-dnd-generators-jsx-1765124bfe23351e230a.js.map
